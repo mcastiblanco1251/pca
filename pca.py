@@ -15,7 +15,7 @@ import datetime
 #im = Image.open('C:/Users/Mcastiblanco/Documents/AGPC/DataScience2020/Streamlit/Arroz/apps/arroz.png')
 im2 = Image.open('r1.jpg')
 st.set_page_config(page_title='Cluster-App', layout="wide", page_icon=im2)
-st.set_option('deprecation.showPyplotGlobalUse', False)
+#st.set_option('deprecation.showPyplotGlobalUse', False)
 
 row1_1, row1_2 = st.columns((2, 3))
 
@@ -114,7 +114,7 @@ with row1_4:
     plt.bar(range(i), cum_sum, label='Suma acumulada de la varianza', color = 'b',alpha=0.5)
     plt.title(f'Alerededor {round(v*100,2)}% de la varianza es explicada por las primeras {i} variables')
     plt.show()
-    st.pyplot()
+    st.pyplot(fig)
 
 st.write('**Nuevo Dataset para Usar**')
 df2=pd.DataFrame(Y_sklearn)
@@ -149,7 +149,7 @@ if st.checkbox('Complementar Visual de Reducción PCA 3D a 2D',value=False):
         ax.set_zlabel("3ro eigenvector")
         ax.w_zaxis.set_ticklabels([])
         plt.show()
-        st.pyplot()
+        st.pyplot(fig)
     with row1_6:
         fig = plt.figure(1, figsize=(10,6))
         plt.scatter(X_reduced[:, 0],  X_reduced[:, 1], c=df2['cat'],cmap=plt.cm.Paired,linewidths=10)
@@ -157,7 +157,7 @@ if st.checkbox('Complementar Visual de Reducción PCA 3D a 2D',value=False):
         #plt.scatter(test_reduced[:, 0],  test_reduced[:, 1],c='r')
         plt.title("Este el 2D Transformado ")
         plt.show()
-        st.pyplot()
+        st.pyplot(fig)
 
 with st.expander("Contáctanos👉"):
     st.subheader('Quieres conocer mas de IA, ML o DL 👉[contactanos!!](http://ia.smartecorganic.com.co/index.php/contact/)')
